@@ -5,14 +5,15 @@ export default function createIteratorObject(report) {
     employees = [...employees, ...report.allEmployees[key]];
   }
 
-  let done = false;
-  let idx = 0;
+  let idx = -1;
 
   return {
     next() {
       idx += 1;
-      if (idx > employees.length) { done = true; }
-      return { value: employees[idx - 1], done };
+      if (idx < employees.length) {
+        return { value: employees[idx], done: false };
+      }
+      return { value: employees[idx], done: true };
     },
 
     [Symbol.iterator]() {

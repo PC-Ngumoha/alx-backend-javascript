@@ -24,5 +24,6 @@ module.exports = {
     'no-console': 0,
     'new-cap': 0,
     'no-restricted-syntax': 0,
+    'no-constant-condition': 0
   },
 };
