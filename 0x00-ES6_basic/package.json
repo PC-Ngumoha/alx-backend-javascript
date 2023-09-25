@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "dev": "npx babel-node --es-module-specifier-resolution=node"
+    "dev": "npx babel-node --es-module-specifier-resolution=node",
+    "lint": "npx eslint"
   },
   "keywords": [],
   "author": "",
