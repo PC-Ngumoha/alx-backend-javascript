@@ -23,6 +23,7 @@ module.exports = {
   },
   rules: {
     'quotes': 0,
-    'no-console': 0
+    'no-console': 0,
+    'comma-dangle': 0
   },
 };
