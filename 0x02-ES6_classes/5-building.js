@@ -1,9 +1,5 @@
 // utility function
 function determineOverrideInSubclass(proto, property) {
-  if (proto === Building.prototype) {
-    return [ true, true ];
-  } 
-
   return [
     Object.getOwnPropertyNames(proto).includes(property),
     typeof proto[property] === 'function',
@@ -14,15 +10,19 @@ export default class Building {
   constructor(sqft) {
     this.sqft = sqft;
 
-    const [available, isFunction] = determineOverrideInSubclass(
-      Object.getPrototypeOf(this),
-      'evacuationWarningMessage',
-    );
+    const proto = Object.getPrototypeOf(this);
 
-    if (!available || !isFunction) {
-      throw new Error(
-        'Class extending Building must override evacuationWarningMessage',
+    if (proto !== Building.prototype) {
+      const [available, isFunction] = determineOverrideInSubclass(
+        proto,
+        'evacuationWarningMessage',
       );
+
+      if (!available || !isFunction) {
+        throw new Error(
+          'Class extending Building must override evacuationWarningMessage',
+        );
+      }
     }
   }
 
