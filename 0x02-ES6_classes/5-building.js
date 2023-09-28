@@ -1,5 +1,9 @@
 // utility function
 function determineOverrideInSubclass(proto, property) {
+  if (proto === Building.prototype) {
+    return [ true, true ];
+  } 
+
   return [
     Object.getOwnPropertyNames(proto).includes(property),
     typeof proto[property] === 'function',
@@ -32,6 +36,4 @@ export default class Building {
   get sqft() {
     return this._sqft;
   }
-
-  evacuationWarningMessage() {}
 }

@@ -23,6 +23,7 @@ module.exports = {
   },
   rules: {
     'no-console': 0,
-    'quotes': 0
+    'quotes': 0,
+    'no-underscore-dangle': 0
   },
 };
