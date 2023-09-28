@@ -200,3 +200,22 @@ class Dog extends Animal {
 Learn more about this 👉 [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/extends)
 
 ### Metaprogramming & Symbols
+
+#### What is Metaprogramming?
+> Metaprogramming is (loosely) all about the underlying mechanics of the language, rather than "high level" data modelling or business logic. If programming can be described as "making programs", metaprogramming could be described as "making programs making programs"
+
+Essentially, the idea behind metaprogramming is being able to create code that can constantly check for changes in it's structure, nature or maybe even it's composition and using these information can either chose to make changes to it's own structure or just keep track of said information.
+
+Javascript (ES6) provides developers with the ability to implement metaprogramming functionality using anyone of the following data-types/Primitives/mechanisms (_Click on any of them to read more_):
+- [Symbols](https://www.keithcirkel.co.uk/metaprogramming-in-es6-symbols/#symbolspecies)
+- [Reflect](https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-2-reflect/)
+- [Proxies](https://www.keithcirkel.co.uk/metaprogramming-in-es6-part-3-proxies/)
+
+Do endeavour to read on each of them when you get the time/chance. They're all exciting reads, especially if you're a nerd like me 😂
+
+#### What is `Symbol`?
+`Symbol` is a new primitive type introduced in ES6 which enables us to create symbols (Well, what else did you expect to read? 😂). These symbols indeed provide us with truly unique values which we can then leverage in our code.
+
+The most important use of Symbols stems from the fact that you can use them to create unique metaprogramming functionality that makes it easier for programmers to leverage said metaprogramming in their programs. And this to an extent is what ES6 does for us by providing us a set of Symbols which can be used to perform metaprogramming.
+
+In order to learn more, please consulting the article on `Symbols` as linked above.
