@@ -1,5 +1,8 @@
 export default function cleanSet(set, startString) {
-  if (!(set instanceof Set) || startString === '') return '';
+  if (!(set instanceof Set)
+      || startString === ''
+      || typeof startString !== 'string'
+  ) return '';
 
   const output = [...set]
     .filter((elem) => elem.startsWith(startString))
