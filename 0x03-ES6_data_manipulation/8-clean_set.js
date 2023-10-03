@@ -5,8 +5,8 @@ export default function cleanSet(set, startString) {
   ) return '';
 
   const output = [...set]
-    .filter((elem) => elem.startsWith(startString))
-    .map((elem) => elem.replace(startString, ''));
+    .filter((elem) => typeof elem === 'string' && elem.startsWith(startString))
+    .map((elem) => elem.slice(startString.length));
 
   return output.join('-');
 }
