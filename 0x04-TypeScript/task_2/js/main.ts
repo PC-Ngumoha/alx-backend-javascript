@@ -64,5 +64,12 @@ function executeWork(employee: Director | Teacher): string {
   }
 }
 
-console.log(executeWork(createEmployee(200)));
-console.log(executeWork(createEmployee(600)));
+// Creating string literal type alias
+type Subjects = 'Math' | 'History';
+
+function todayClass(subject: Subjects): string {
+  return `Teaching ${subject}`;
+}
+
+console.log(todayClass('Math'));
+console.log(todayClass('History'));
