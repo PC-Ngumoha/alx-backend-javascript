@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -18,6 +19,12 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Typescript Project',
+      template: 'js/template.html'
+    })
+  ],
   devtool: 'source-map',
   devServer: {
     // contentBase: path.join(__dirname, 'dist'),
