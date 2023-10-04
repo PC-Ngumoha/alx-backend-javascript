@@ -12,11 +12,39 @@ interface Directors extends Teacher {
 }
 
 interface printTeacherFunction {
-  printTeacher: (first: string, last: string) => string
+  printTeacher(first: string, last: string): string
 }
 
 function printTeacher(firstName: string, lastName: string): string {
   return `${firstName[0]}. ${lastName}`
 }
 
-console.log(printTeacher('Chukwuemeka', 'Ngumoha'));
+// StudentClass
+interface StudentClassInterface {
+  firstName: string,
+  lastName: string,
+  new(firstName: string, lastName: string): StudentClass,
+  workOnHomework(): string,
+  displayName(): string
+}
+
+class StudentClass {
+  public firstName;
+  public lastName;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+
+  displayName(): string {
+    return `${this.firstName}`;
+  }
+}
+
+const student: StudentClass = new StudentClass('Chukwuemeka', 'Ngumoha');
+console.log(student);
