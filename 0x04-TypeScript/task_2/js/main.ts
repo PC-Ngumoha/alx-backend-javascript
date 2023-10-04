@@ -50,7 +50,19 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
 }
 
-console.log(createEmployee('$1000'));
-console.log(createEmployee(1000));
-console.log(createEmployee('$100'));
-console.log(createEmployee(100));
+// used as a type predicate
+function isDirector(employee: Director | Teacher): employee is Director {
+  return (employee as Director).workDirectorTasks !== undefined;
+}
+
+// uses type predicate: isDirector
+function executeWork(employee: Director | Teacher): string {
+  if(isDirector(employee)) {
+    return employee.workDirectorTasks();
+  } else {
+    return employee.workTeacherTasks();
+  }
+}
+
+console.log(executeWork(createEmployee(200)));
+console.log(executeWork(createEmployee(600)));
