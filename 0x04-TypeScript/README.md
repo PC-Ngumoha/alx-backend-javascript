@@ -24,3 +24,7 @@ console.log(obj.attribute2); // 42
 console.log(obj.attribute3); // [1, 2, 3]
 console.log(obj.attribute4); // { key: "value" }
 ```
+
+## Useful Links
+
+- [The TypeScript Documentation](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
