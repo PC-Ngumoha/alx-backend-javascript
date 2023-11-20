@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint [0-9]-*.js --ignore-pattern '*test*' --quiet",
+    "lint": "eslint [0-9]-*.js --quiet",
     "full-test": "npm run test && npm run lint"
   },
   "keywords": [],
