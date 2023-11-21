@@ -9,4 +9,7 @@ test('read_file calls the correct functions', () => {
 
   expect(existsSyncSpy).toHaveBeenCalled();
   expect(readFileSyncSpy).toHaveBeenCalled();
+
+  existsSyncSpy.mockRestore();
+  readFileSyncSpy.mockRestore();
 });

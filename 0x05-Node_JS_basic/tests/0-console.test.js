@@ -9,4 +9,6 @@ test('displayMessage() function actually prints to the console', () => {
   expect(writeSpy).toHaveBeenCalled();
   expect(writeSpy).toHaveBeenCalledWith(message);
   expect(writeSpy).toHaveBeenCalledTimes(1);
+
+  writeSpy.mockRestore();
 });

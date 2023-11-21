@@ -6,6 +6,7 @@ test('read_file_async calls up the correct functions', (done) => {
 
   countStudents('database.csv').then(() => {
     expect(readFileSpy).toHaveBeenCalled();
+    readFileSpy.mockRestore();
     done();
   });
 });
