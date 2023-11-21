@@ -17,13 +17,15 @@ const countStudents = (path) => {
   const fields = [];
   const studentsByField = {};
   lines.forEach((line) => {
-    const student = line.split(',');
-    const [firstName, , , field] = student;
-    if (!fields.includes(field)) {
-      fields.push(field);
-      studentsByField[field] = [];
+    if (line !== '') {
+      const student = line.split(',');
+      const [firstName, , , field] = student;
+      if (!fields.includes(field)) {
+        fields.push(field);
+        studentsByField[field] = [];
+      }
+      studentsByField[field].push(firstName);
     }
-    studentsByField[field].push(firstName);
   });
   console.log(`Number of students: ${totalStudents}`);
   fields.forEach((field) => {
