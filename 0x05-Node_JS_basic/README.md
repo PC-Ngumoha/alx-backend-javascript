@@ -15,3 +15,5 @@
 - [Mocha.js documentation](https://mochajs.org/)
 
 - [Nodemon module Github README documentation](https://github.com/remy/nodemon#nodemon)
+
+- [Executing shell commands with Node.js - Explains the child_process module very well](https://stackabuse.com/executing-shell-commands-with-node-js/)
