@@ -16,34 +16,34 @@ const app = http.createServer((request, response) => {
         if (err) {
           response.statusCode = 400;
           response.write('Cannot load the database');
-          return response.end();
-        }
-        const lines = data.split('\n');
-        lines.shift();
-        let totalStudents = 0;
-        const fields = [];
-        const studentsByField = {};
-        lines.forEach((line) => {
-          if (line !== '') {
-            totalStudents += 1;
-            const student = line.split(',');
-            const [firstName, , , field] = student;
-            if (!fields.includes(field)) {
-              fields.push(field);
-              studentsByField[field] = [];
+        } else {
+          const lines = data.split('\n');
+          lines.shift();
+          let totalStudents = 0;
+          const fields = [];
+          const studentsByField = {};
+          lines.forEach((line) => {
+            if (line !== '') {
+              totalStudents += 1;
+              const student = line.split(',');
+              const [firstName, , , field] = student;
+              if (!fields.includes(field)) {
+                fields.push(field);
+                studentsByField[field] = [];
+              }
+              studentsByField[field].push(firstName);
             }
-            studentsByField[field].push(firstName);
-          }
-        });
-        response.write(`Number of students: ${totalStudents}\n`);
-        fields.forEach((field, index) => {
-          const count = studentsByField[field].length;
-          const students = studentsByField[field].join(', ');
-          response.write(
-            `Number of students in ${field}: ${count}. List: ${students}`,
-          );
-          if (index < fields.length - 1) response.write('\n');
-        });
+          });
+          response.write(`Number of students: ${totalStudents}\n`);
+          fields.forEach((field, index) => {
+            const count = studentsByField[field].length;
+            const students = studentsByField[field].join(', ');
+            response.write(
+              `Number of students in ${field}: ${count}. List: ${students}`,
+            );
+            if (index < fields.length - 1) response.write('\n');
+          });
+        }
         response.end();
       });
     }
