@@ -13,11 +13,12 @@ const countStudents = (path) => {
   const data = fs.readFileSync(path, 'utf-8');
   const lines = data.split('\n');
   lines.shift();
-  const totalStudents = lines.length;
+  let totalStudents = 0;
   const fields = [];
   const studentsByField = {};
   lines.forEach((line) => {
     if (line !== '') {
+      totalStudents += 1;
       const student = line.split(',');
       const [firstName, , , field] = student;
       if (!fields.includes(field)) {
@@ -27,11 +28,11 @@ const countStudents = (path) => {
       studentsByField[field].push(firstName);
     }
   });
-  console.log(`Number of students: ${totalStudents}`);
+  process.stdout.write(`Number of students: ${totalStudents}\n`);
   fields.forEach((field) => {
     const count = studentsByField[field].length;
     const students = studentsByField[field].join(', ');
-    console.log(`Number of students in ${field}: ${count}. List: ${students}`);
+    process.stdout.write(`Number of students in ${field}: ${count}. List: ${students}\n`);
   });
 };
 
