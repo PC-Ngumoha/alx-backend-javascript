@@ -10,6 +10,7 @@ const app = http.createServer((request, response) => {
     response.write('Hello Holberton School!');
     response.end();
   } else if (request.url === '/students') {
+    response.write('This is the list of our students\n');
     if (DB_PATH !== undefined) {
       fs.readFile(DB_PATH, 'utf-8', (err, data) => {
         if (err) {
@@ -17,7 +18,6 @@ const app = http.createServer((request, response) => {
           response.write('Cannot load the database');
           return response.end();
         }
-        response.write('This is the list of our students\n');
         const lines = data.split('\n');
         lines.shift();
         let totalStudents = 0;
