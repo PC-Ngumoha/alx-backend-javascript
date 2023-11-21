@@ -8,7 +8,6 @@ test('1-stdin.js returns the correct output for the right input', (done) => {
   exec("echo 'Chukwuemeka' | node 1-stdin.js", (error, stdout, stderr) => {
     expect(error).toBeNull();
     expect(stdout).toBe(expectedOutput);
-    expect(stderr).not.toBeNull();
     done();
   });
 });
