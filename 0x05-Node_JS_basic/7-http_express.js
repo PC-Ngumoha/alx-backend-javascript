@@ -17,7 +17,7 @@ app.get('/students', (req, res) => {
     fs.readFile(DB_PATH, 'utf-8', (err, data) => {
       if (err) {
         res.statusCode = 400;
-        res.write('Cannot load the database\n');
+        res.write('Cannot load the database');
       } else {
         const lines = data.split('\n');
         lines.shift();
