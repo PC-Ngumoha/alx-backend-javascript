@@ -28,11 +28,11 @@ const countStudents = (path) => {
       studentsByField[field].push(firstName);
     }
   });
-  process.stdout.write(`Number of students: ${totalStudents}\n`);
+  console.log(`Number of students: ${totalStudents}`);
   fields.forEach((field) => {
     const count = studentsByField[field].length;
     const students = studentsByField[field].join(', ');
-    process.stdout.write(`Number of students in ${field}: ${count}. List: ${students}\n`);
+    console.log(`Number of students in ${field}: ${count}. List: ${students}`);
   });
 };
 
