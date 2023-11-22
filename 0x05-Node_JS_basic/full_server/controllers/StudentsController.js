@@ -18,7 +18,7 @@ export default class StudentsController {
           if (index < fields.length - 1) res.write('\n');
         });
       })
-      .catch((err) => {
+      .catch(() => {
         res.statusCode = 500;
         res.write('Cannot load the database');
       })
@@ -41,7 +41,7 @@ export default class StudentsController {
           res.statusCode = 200;
           res.write(`List: ${firstnames}`);
         })
-        .catch((err) => {
+        .catch(() => {
           res.statusCode = 500;
           res.write('Cannot load the database');
         })

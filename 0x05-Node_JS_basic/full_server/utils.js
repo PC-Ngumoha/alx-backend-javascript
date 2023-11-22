@@ -3,7 +3,7 @@ import fs from 'fs';
 const readDatabase = (filePath) => new Promise((resolve, reject) => {
   fs.readFile(filePath, 'utf-8', (err, data) => {
     if (err) {
-      return reject(new Error());
+      return reject();
     }
     const lines = data.split('\n');
     lines.shift();
