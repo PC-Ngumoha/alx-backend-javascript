@@ -1,7 +1,8 @@
 import path from 'node:path';
 import readDatabase from '../utils.js';
 
-const DB_PATH = path.normalize(process.argv[2]);
+// const DB_PATH = path.normalize(process.argv[2]);
+const DB_PATH = process.argv[2];
 
 export default class StudentsController {
   
