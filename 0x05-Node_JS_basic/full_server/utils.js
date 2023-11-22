@@ -1,18 +1,16 @@
-import fs from 'node:fs';
+import fs from 'fs';
 
-const readDatabase = (file_path) => new Promise((resolve, reject) => {
-  fs.readFile(file_path, 'utf-8', (err, data) => {
+const readDatabase = (filePath) => new Promise((resolve, reject) => {
+  fs.readFile(filePath, 'utf-8', (err, data) => {
     if (err) {
       return reject(new Error());
     }
     const lines = data.split('\n');
     lines.shift();
-    let totalStudents = 0;
     const fields = [];
     const studentsByField = {};
     lines.forEach((line) => {
       if (line !== '') {
-        totalStudents += 1;
         const student = line.split(',');
         const [firstName, , , field] = student;
         if (!fields.includes(field)) {
