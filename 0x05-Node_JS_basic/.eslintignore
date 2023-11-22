@@ -1,4 +1,3 @@
 # Files to not lint
 *test.js
 *main*.js
-# full_server/*

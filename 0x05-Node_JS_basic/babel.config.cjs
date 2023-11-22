@@ -14,6 +14,14 @@ module.exports = function(api) {
         }
       }
     ]
+    // [
+    //   'env',
+    //   {
+    //     'exclude': [
+    //       "transform-regenerator"
+    //     ]
+    //   }
+    // ]
   ];
 
   return {presets};

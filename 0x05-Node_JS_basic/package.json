@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "lint": "eslint [0-9]-*.js --quiet",
+    "lint": "eslint [0-9]-*.js full_server/* --quiet",
     "full-test": "npm run test && npm run lint",
-    "dev": "nodemon --exec babel-node --presets babel-preset-env ./full_server/server.js ./database.csv"
+    "dev": "nodemon --exec babel-node --es-module-specifier-resolution=node --presets babel-preset-env ./full_server/server.js ./database.csv"
   },
   "keywords": [],
   "author": "",

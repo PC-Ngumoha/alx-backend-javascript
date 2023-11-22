@@ -1,56 +1,53 @@
-import path from 'node:path';
-import readDatabase from '../utils.js';
+import readDatabase from '../utils';
 
-// const DB_PATH = path.normalize(process.argv[2]);
 const DB_PATH = process.argv[2];
 
 export default class StudentsController {
-  
-  static getAllStudents(request, response) {
+  static getAllStudents(req, res) {
     readDatabase(DB_PATH)
-    .then((data) => {
-      response.statusCode = 200;
-      response.write('This is the list of our students\n');
-      const fields = Object.keys(data).sort();
-      fields.forEach((field, index) => {
-        const numStudents = data[field].length;
-        const firstnames = data[field].join(', ');
-        response.write(
-          `Number of students in ${field}: ${numStudents}. List: ${firstnames}`,
-        );
-        if (index < fields.length - 1) response.write('\n');
+      .then((data) => {
+        res.statusCode = 200;
+        res.write('This is the list of our students\n');
+        const fields = Object.keys(data).sort();
+        fields.forEach((field, index) => {
+          const numStudents = data[field].length;
+          const firstnames = data[field].join(', ');
+          res.write(
+            `Number of students in ${field}: ${numStudents}. List: ${firstnames}`,
+          );
+          if (index < fields.length - 1) res.write('\n');
+        });
+      })
+      .catch((err) => {
+        res.statusCode = 500;
+        res.write('Cannot load the database');
+      })
+      .finally(() => {
+        res.end();
       });
-    })
-    .catch((err) => {
-      response.statusCode = 500;
-      response.write('Cannot load the database');
-    })
-    .finally(() => {
-      response.end();
-    })
   }
 
-  static getAllStudentsByMajor(request, response) {
-    const major = request.params.major;
+  static getAllStudentsByMajor(req, res) {
+    const { major } = req.params;
 
     if (major !== 'CS' && major !== 'SWE') {
-      response.statusCode = 500;
-      response.write('Major parameter must be CS or SWE');
-      return response.end();
+      res.statusCode = 500;
+      res.write('Major parameter must be CS or SWE');
+      res.end();
+    } else {
+      readDatabase(DB_PATH)
+        .then((data) => {
+          const firstnames = data[major].join(', ');
+          res.statusCode = 200;
+          res.write(`List: ${firstnames}`);
+        })
+        .catch((err) => {
+          res.statusCode = 500;
+          res.write('Cannot load the database');
+        })
+        .finally(() => {
+          res.end();
+        });
     }
-
-    readDatabase(DB_PATH)
-    .then((data) => {
-      const firstnames = data[major].join(', ');
-      response.statusCode = 200;
-      response.write(`List: ${firstnames}`)
-    })
-    .catch((err) => {
-      response.statusCode = 500;
-      response.write('Cannot load the database');
-    })
-    .finally(() => {
-      response.end();
-    });
   }
 }

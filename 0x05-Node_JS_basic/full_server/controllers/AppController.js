@@ -1,12 +1,10 @@
-
 /**
  * AppController class
  */
 export default class AppController {
-  static getHomepage(request, response) {
-    response.statusCode = 200;
-    response.write('Hello Holberton School!');
-    console.log(response.text);
-    response.end();
+  static getHomepage(req, res) {
+    res.statusCode = 200;
+    res.write('Hello Holberton School!');
+    res.end();
   }
 }
