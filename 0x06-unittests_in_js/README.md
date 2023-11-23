@@ -25,3 +25,5 @@
 - [MochaJS Documentation](https://mochajs.org/)
 
 - [chai-as-promised: Chai assertions for promises](https://github.com/domenic/chai-as-promised)
+
+- [Assert - Node.js default assertion library documentation](https://nodejs.org/api/assert.html#assertequalactual-expected-message)
