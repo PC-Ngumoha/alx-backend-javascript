@@ -28,6 +28,14 @@ describe('Index page', function() {
         done();
       });
     });
+
+    it('Should return the correct message', function(done) {
+      const expectedMessage = 'Payment methods for cart 12';
+      request(`${requestUrl}cart/12`, (error, response, body) => {
+        expect(response.body === expectedMessage).to.be.true;
+        done();
+      });
+    })
   });
   
   describe('GET /cart/:id - id is not a number', function() {
